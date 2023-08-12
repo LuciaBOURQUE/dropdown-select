@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# React-dropdown-ww
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple dropdown with your mapped data.
 
-## Available Scripts
+You have several selection elements and you want your dropdown lists to maintain a certain consistency within your project?  
+This component allows you to supply your elements in a simple and autonomous way by injecting the data that you keep thanks to the props.
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+```shell
+// With npm
+npm install react-dropdown-ww --save
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+or
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+// With yarn
+yarn add react-dropdown-ww
+```
 
-### `npm test`
+## Importing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```shell
+import { Dropdown } from "react-dropdown-ww"
+```
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
+import React, { useState } from "react"
+import { Dropdown } from "react-dropdown-ww"
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const App = () => {
+  const [inputValue, setInputValue] = useState("")
+  const handleChange = (e) => {
+    setInputValue(e.target.value)
+  }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  const flowers = [
+  { value: "pivoine", label: "Pivoine" },
+  { value: "dahlia", label: "Dahlia" },
+  { value: "lilas", label: "Lilas" },
+  { value: "oeillet", label: "Oeillet" },
+  { value: "rosebranchue", label: "Rose Branchue" },
+  { value: "symphorine", label: "Symphorine" },
+    ]
 
-### `npm run eject`
+    let options = flowers.map((flower) => (
+    flower.label
+    ))
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  return (
+    <div>
+      <Dropdown
+        label={"Title of your label"}
+        title={"Title of your input dropdown"}
+        name={"state"}
+        state={inputValue}
+        options={options}
+        handleChange={handleChange}
+      />
+    </div>
+  )
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Documentation of props component
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Here you can control the following props by providing values for them :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+| Name         | Type   | Example                                                     | Description                                                                             |
+| ------------ | ------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| type        | string | "text"                                          | Type of input                                                                    |
+| label        | string | "Types of flowers"                                          | Title of your label                                                                     |
+| title        | string | "Choose your flowers"                                       | Title of your input dropdown                                                            |
+| name         | string | "flowers"                                                   | Name of select and label attribut ; htlmFor, id, name                                    |
+| isRequired        | boolean | true                                        | If set, input type hidden would be added in the component with required prop as true/false                                                                     |
+| state        | func   | const [inputValue, setInputValue] = useState("")            | Control the value of the search input (changing this will update the available options) |
+| options      | array  | const options = [{}]                                        | Specify the options the user can select from                                            |
+| handleChange | func   | const handleChange = (e) => {setInputValue(e.target.value)} | Subscribe to change events                                                              |
 
-## Learn More
+## Author
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Lucia Bourque

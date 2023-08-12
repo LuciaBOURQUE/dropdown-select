@@ -1,19 +1,27 @@
 {
-  "name": "dropdown",
-  "version": "0.1.0",
-  "private": true,
+  "name": "react-dropdown-ww",
+  "version": "1.1.2",
+  "private": false,
+  "description": "Simple dropdown select",
+  "author": "Lucia Bourque",
+  "keywords": ["react", "react-components", "dropdown", "select"],
+  "main": "dist/index.js", 
+  "module": "dist/index.js", 
+  "files": [ "dist", "README.md" ],
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "win-node-env": "^0.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +42,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.22.9"
   }
 }
